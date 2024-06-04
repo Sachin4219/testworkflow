@@ -1,8 +1,9 @@
 name: Convert YAML to JSON
 
 on:
-  push
-
+  pull_request:
+    types:
+      - closed
 jobs:
   convertJob:
     runs-on: ubuntu-latest
