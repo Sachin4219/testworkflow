@@ -17,9 +17,15 @@ Person3: &Person3
   Age: 21
   <<: *base
 
+Person4: &Person4
+  name: Harsh
+  Age: 21
+  <<: *base
+
 Persons:
   - *Person1
   - *Person2
   - *Person3
+  - *Person4
 
 
