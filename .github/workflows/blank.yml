@@ -1,0 +1,32 @@
+name: Convert YAML to JSON
+
+on:
+  push
+
+jobs:
+  convertJob:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Convert YAML to JSON
+        run: |
+          # Read the demo.yaml file
+          content=$(cat demo.yaml)
+
+          # Escape special characters for JSON
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+
+          # Set the output variable
+          echo "::set-output name=jsonContent::$content"
+
+      - name: Create JSON file
+        run: |
+          echo "${{ steps.convertJob.outputs.jsonContent }}" > converted.json
+          git add converted.json
+          git commit -m "Convert demo.yaml to JSON"
+          git push
