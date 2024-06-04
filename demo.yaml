@@ -1,0 +1,25 @@
+likings: &base
+  favfruit: Mango
+  favBird: Eurasian Hoopoe
+
+Person1: &Person1
+  name: Soumik
+  Age: 21
+  <<: *base
+
+Person2: &Person2
+  name: Sachin
+  Age: 21
+  <<: *base
+
+Person3: &Person3
+  name: Adarsh
+  Age: 21
+  <<: *base
+
+Persons:
+  - *Person1
+  - *Person2
+  - *Person3
+
+
